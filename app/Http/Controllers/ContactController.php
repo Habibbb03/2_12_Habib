@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\models\contact;
 
 class ContactController extends Controller
 {
@@ -36,7 +37,11 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $contact = Contact::create($request->all());
+        $contact->save();
+
+        return redirect('contacts');
     }
 
     /**
@@ -47,7 +52,7 @@ class ContactController extends Controller
      */
     public function show($id)
     {
-        //
+        dd($request->all());
     }
 
     /**
@@ -58,7 +63,7 @@ class ContactController extends Controller
      */
     public function edit($id)
     {
-        //
+        dd($request->all());
     }
 
     /**

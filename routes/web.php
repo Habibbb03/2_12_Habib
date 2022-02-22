@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view("Home",[
-        "title" => "Home"
+    return view("Index",[
+        "title" => "Beranda"
     ]);
 });
 
@@ -42,3 +42,9 @@ Route::resource('/contacts', ContactController::class);
     ]);
 };
 
+
+Auth::routes();
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});
